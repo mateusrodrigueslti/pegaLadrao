@@ -1,3 +1,115 @@
-<p>
-  register-criminals works!
-</p>
+<mat-toolbar color="primary" class="mb-2">
+    <mat-toolbar-row>
+        <span>Pega Ladrão</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container-fluid">
+    <form>
+        <mat-card class="mb-2">
+            <mat-card-header>
+                <mat-card-title>Dados Pessoais</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <mat-form-field class="col-md-3 col-sm-12">
+                    <input matInput placeholder="Nome">
+                </mat-form-field>
+
+                <mat-form-field class="col-md-2 col-sm-12">
+                    <input matInput placeholder="Data de Nascimento">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Nº RG">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="CPF">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Profissão">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Sexo">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Estado cívil">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Telefone">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Celular">
+                </mat-form-field>
+            </mat-card-content>
+
+        </mat-card>
+
+        <mat-card class="mb-2">
+            <mat-card-header>
+                <mat-card-title>Endereço</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Endereço">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="CEP">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Complemento">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Bairro">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Cidade">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="UF">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Naturalidade">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Nacionalidade">
+                </mat-form-field>
+            </mat-card-content>
+
+        </mat-card>
+
+        <mat-card class="mb-2">
+            <mat-card-header>
+                <mat-card-title>Filiação</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Nome do pai">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12">
+                    <input matInput placeholder="Nome da mãe">
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <button class="fab-button2" mat-fab (click)="sendMeToHome()">
+            <i class="material-icons md-light">save</i>
+        </button>
+    </form>
+</div>

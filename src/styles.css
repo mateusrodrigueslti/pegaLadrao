@@ -10,3 +10,17 @@ body{
 .cursor-pointer{
     cursor: pointer;
 }
+
+.fab-button2 {
+    position: fixed !important;
+    left: 94%;
+    bottom: 24px;
+}
+
+.material-icons.md-light { 
+    color: rgba(255, 255, 255, 1); 
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }

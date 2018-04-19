@@ -9,7 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatIconModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -44,7 +44,8 @@ import { OccurrencesRegisterComponent } from './register-occurrences/register-oc
         MatFormFieldModule,
         MatInputModule,
         MatToolbarModule,
-        MatGridListModule
+        MatGridListModule,
+        MatIconModule
     ],
     providers: [],
     bootstrap: [AppComponent]
