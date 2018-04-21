@@ -1,13 +1,40 @@
-<mat-toolbar color="primary" class="mb-2">
-    <mat-toolbar-row>
-        <span>Pega Ladrão</span>
-        <span class="spacer"></span>
-        <mat-icon>lock</mat-icon>
-    </mat-toolbar-row>
-</mat-toolbar>
 <div class="container-fluid">
-    <mat-card class="mb-2">
 
+    <mat-card class="mb-2">
+        <mat-card-header>Dados da ocorrência</mat-card-header>
+        
+        <mat-card-content>
+            <mat-form-field class="col-md-12">
+                <input matInput placeholder="Endereço">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-12">
+                <input matInput placeholder="Nº">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-12">
+                <input matInput placeholder="Bairro">
+            </mat-form-field>
+            
+            <mat-form-field class="col-md-12">
+                <input matInput placeholder="Cidade">
+            </mat-form-field>
+            
+            <mat-form-field class="col-md-12">
+                <input matInput placeholder="UF">
+            </mat-form-field>
+        
+            <mat-form-field class="col-md-12">
+                <input matInput placeholder="Data do fato">
+            </mat-form-field>
+        
+            <mat-form-field class="col-md-12">
+                <input matInput placeholder="Hora do fato">
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mb-2">
         <mat-card-header>
             <mat-card-title>Ocorrência</mat-card-title>
         </mat-card-header>
@@ -17,9 +44,8 @@
                 <textarea matInput placeholder="Descrição do fato"></textarea>
             </mat-form-field>
         </mat-card-content>
-
-
     </mat-card>
+
     <button class="fab-button2" mat-fab (click)="sendMeToHome()">
         <i class="material-icons md-light">save</i>
     </button>

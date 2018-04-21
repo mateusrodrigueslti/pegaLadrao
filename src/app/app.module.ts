@@ -9,7 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatIconModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatDatepickerModule, MatDatepicker, MAT_DATE_LOCALE, MatNativeDateModule, MatDialogModule, MatSnackBarModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -22,6 +22,12 @@ import { HomeComponent } from './home/home.component';
 import { RecommendationGenerateComponent } from './generate-recommendation/generate-recommendation.component';
 import { CriminalsRegisterComponent } from './register-criminals/register-criminals.component';
 import { OccurrencesRegisterComponent } from './register-occurrences/register-occurrences.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CriminalsService } from './register-criminals/criminals.service';
+import { Interceptor } from './interceptor';
+import { SpinnerComponent } from './spinner/spinner.component';
+
 
 
 
@@ -34,6 +40,7 @@ import { OccurrencesRegisterComponent } from './register-occurrences/register-oc
         RecommendationGenerateComponent,
         CriminalsRegisterComponent,
         OccurrencesRegisterComponent,
+        SpinnerComponent,
     ],
     imports: [
         BrowserModule,
@@ -45,9 +52,24 @@ import { OccurrencesRegisterComponent } from './register-occurrences/register-oc
         MatInputModule,
         MatToolbarModule,
         MatGridListModule,
-        MatIconModule
+        MatIconModule,
+        FormsModule,
+        HttpClientModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: [
+        CriminalsService,
+        { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: Interceptor,
+            multi: true
+        }],
+    bootstrap: [AppComponent],
+    entryComponents: [SpinnerComponent]
 })
 export class AppModule { }

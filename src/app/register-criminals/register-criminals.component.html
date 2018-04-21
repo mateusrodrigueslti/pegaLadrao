@@ -1,115 +1,113 @@
-<mat-toolbar color="primary" class="mb-2">
-    <mat-toolbar-row>
-        <span>Pega Ladrão</span>
-    </mat-toolbar-row>
-</mat-toolbar>
-
 <div class="container-fluid">
-    <form>
-        <mat-card class="mb-2">
-            <mat-card-header>
-                <mat-card-title>Dados Pessoais</mat-card-title>
-            </mat-card-header>
+    <mat-card class="mb-2">
+        <mat-card-header>
+            <mat-card-title>Dados Pessoais</mat-card-title>
+        </mat-card-header>
 
-            <mat-card-content>
-                <mat-form-field class="col-md-3 col-sm-12">
-                    <input matInput placeholder="Nome">
-                </mat-form-field>
+        <mat-card-content>
+            <mat-form-field class="col-md-3 col-sm-12">
+                <input matInput placeholder="Nome" [(ngModel)]="person.name">
+            </mat-form-field>
 
-                <mat-form-field class="col-md-2 col-sm-12">
-                    <input matInput placeholder="Data de Nascimento">
-                </mat-form-field>
+            <!-- <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="person.dateOfBirth">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Nº RG">
-                </mat-form-field>
+            <mat-form-field class="col-md-2 col-sm-12">
+                <input matInput placeholder="Data de Nascimento" [(ngModel)]="person.dateOfBirth">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="CPF">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Nº RG" [(ngModel)]="person.rg">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Profissão">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput placeholder="CPF" [(ngModel)]="person.cpf">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Sexo">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Profissão" [(ngModel)]="person.occupation">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Estado cívil">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Sexo" [(ngModel)]="person.gender">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Telefone">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Estado cívil" [(ngModel)]="person.maritalStatus">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Celular">
-                </mat-form-field>
-            </mat-card-content>
+            <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Telefone" [(ngModel)]="person.phone">
+            </mat-form-field>
 
-        </mat-card>
+            <mat-form-field class="col-sm-12">
+                <input matInput placeholder="Celular">
+            </mat-form-field>
+        </mat-card-content>
 
-        <mat-card class="mb-2">
-            <mat-card-header>
-                <mat-card-title>Endereço</mat-card-title>
-            </mat-card-header>
+    </mat-card>
 
-            <mat-card-content>
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Endereço">
-                </mat-form-field>
+    <mat-card class="mb-2">
+        <mat-card-header>
+            <mat-card-title>Endereço</mat-card-title>
+        </mat-card-header>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="CEP">
-                </mat-form-field>
+        <mat-card-content>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.address.address" placeholder="Endereço">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Complemento">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.address.cep" placeholder="CEP">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Bairro">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.address.complement" placeholder="Complemento">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Cidade">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.address.neighborhood" placeholder="Bairro">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="UF">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.address.city" placeholder="Cidade">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Naturalidade">
-                </mat-form-field>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.address.uf" placeholder="UF">
+            </mat-form-field>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Nacionalidade">
-                </mat-form-field>
-            </mat-card-content>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.gender" placeholder="Naturalidade">
+            </mat-form-field>
 
-        </mat-card>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.gender" placeholder="Nacionalidade">
+            </mat-form-field>
+        </mat-card-content>
 
-        <mat-card class="mb-2">
-            <mat-card-header>
-                <mat-card-title>Filiação</mat-card-title>
-            </mat-card-header>
+    </mat-card>
 
-            <mat-card-content>
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Nome do pai">
-                </mat-form-field>
+    <mat-card class="mb-2">
+        <mat-card-header>
+            <mat-card-title>Filiação</mat-card-title>
+        </mat-card-header>
 
-                <mat-form-field class="col-sm-12">
-                    <input matInput placeholder="Nome da mãe">
-                </mat-form-field>
-            </mat-card-content>
-        </mat-card>
+        <mat-card-content>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.gender" placeholder="Nome do pai">
+            </mat-form-field>
 
-        <button class="fab-button2" mat-fab (click)="sendMeToHome()">
-            <i class="material-icons md-light">save</i>
-        </button>
-    </form>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.gender" placeholder="Nome da mãe">
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+
+    <button class="fab-button2" mat-fab (click)="save()">
+        <i class="material-icons md-light">save</i>
+    </button>
 </div>
