@@ -27,6 +27,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CriminalsService } from './register-criminals/criminals.service';
 import { Interceptor } from './interceptor';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { GenerateRecommendationService } from './generate-recommendation/generate-recommendation.service';
 
 
 
@@ -63,6 +64,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ],
     providers: [
         CriminalsService,
+        GenerateRecommendationService,
         { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
         {
             provide: HTTP_INTERCEPTORS,
