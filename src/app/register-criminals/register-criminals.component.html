@@ -52,6 +52,22 @@
 
     <mat-card class="mb-2">
         <mat-card-header>
+            <mat-card-title>Filiação</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.fathersName" placeholder="Nome do pai">
+            </mat-form-field>
+
+            <mat-form-field class="col-sm-12">
+                <input matInput [(ngModel)]="person.mothersName" placeholder="Nome da mãe">
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mb-2">
+        <mat-card-header>
             <mat-card-title>Endereço</mat-card-title>
         </mat-card-header>
 
@@ -81,31 +97,19 @@
             </mat-form-field>
 
             <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.gender" placeholder="Naturalidade">
+                <input matInput [(ngModel)]="person.naturalness" placeholder="Naturalidade">
             </mat-form-field>
 
             <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.gender" placeholder="Nacionalidade">
+                <input matInput [(ngModel)]="person.nationality" placeholder="Nacionalidade">
             </mat-form-field>
         </mat-card-content>
 
     </mat-card>
 
-    <mat-card class="mb-2">
-        <mat-card-header>
-            <mat-card-title>Filiação</mat-card-title>
-        </mat-card-header>
-
-        <mat-card-content>
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.gender" placeholder="Nome do pai">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.gender" placeholder="Nome da mãe">
-            </mat-form-field>
-        </mat-card-content>
-    </mat-card>
+    <mat-form-field class="col-md-12">
+        <textarea matInput [(ngModel)]="person.criminalPattern" placeholder="Descrição do fato"></textarea>
+    </mat-form-field>
 
     <button class="fab-button2" mat-fab (click)="save()">
         <i class="material-icons md-light">save</i>

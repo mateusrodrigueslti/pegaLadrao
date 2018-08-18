@@ -14,25 +14,30 @@ import { MatSnackBar } from '@angular/material';
 export class CriminalsRegisterComponent implements OnInit {
 
     person: Person = {
-        name: '',
-        dateOfBirth: '',
-        rg: '',
-        cpf: '',
-        occupation: '',
-        gender: '',
-        maritalStatus: '',
-        phone: '',
+        name: 'Mateus Rodrigues de Oliveira',
+        dateOfBirth: '27041994',
+        rg: '3974983',
+        cpf: '10700938400',
+        occupation: 'Analista Desenvolvedor',
+        gender: 'Masculino',
+        maritalStatus: 'Solteiro',
+        phone: '83996552547',
+        mothersName: 'Joece Mara Correa Rodrigues',
+        fathersName: 'Jose Lusimario de Oliveira',
+        nationality: 'Brasileiro',
+        naturalness: 'Alvorada',
+        criminalPattern:'ssss',
         address: {
-            cep: '',
-            address: '',
-            city: '',
+            cep: '58135000',
+            address: 'Alfredo Régis',
+            city: 'Esperanã',
             complement: '',
-            neighborhood: '',
-            uf: ''
+            neighborhood: 'Centro',
+            uf: 'PB'
         }
     };
 
-    constructor(private router: Router, private criminalService: CriminalsService, public snackBar: MatSnackBar) { }
+    constructor(private router: Router, private criminalService: CriminalsService, private snackBar: MatSnackBar) { }
 
     ngOnInit() {
     }

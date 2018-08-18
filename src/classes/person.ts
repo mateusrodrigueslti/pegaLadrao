@@ -1,6 +1,9 @@
 import { Address } from "./address";
+import { CriminalPattern } from "./criminalPattern";
 
 export class Person {
+    address: Address;
+    criminalPattern: String;
     name: string;
     dateOfBirth: string;
     rg: string;
@@ -9,5 +12,8 @@ export class Person {
     gender: string;
     maritalStatus: string;
     phone: string;
-    address: Address;
+    mothersName: string;
+    fathersName: string;
+    nationality: string;
+    naturalness: string;
 }
