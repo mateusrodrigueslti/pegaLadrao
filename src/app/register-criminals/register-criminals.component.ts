@@ -14,26 +14,26 @@ import { MatSnackBar } from '@angular/material';
 export class CriminalsRegisterComponent implements OnInit {
 
     person: Person = {
-        name: 'Mateus Rodrigues de Oliveira',
-        dateOfBirth: '27041994',
-        rg: '3974983',
-        cpf: '10700938400',
-        occupation: 'Analista Desenvolvedor',
-        gender: 'Masculino',
-        maritalStatus: 'Solteiro',
-        phone: '83996552547',
-        mothersName: 'Joece Mara Correa Rodrigues',
-        fathersName: 'Jose Lusimario de Oliveira',
-        nationality: 'Brasileiro',
-        naturalness: 'Alvorada',
-        criminalPattern:'ssss',
+        name: '',
+        dateOfBirth: '',
+        rg: '',
+        cpf: '',
+        occupation: '',
+        gender: '',
+        maritalStatus: '',
+        phone: '',
+        mothersName: '',
+        fathersName: '',
+        nationality: '',
+        naturalness: '',
+        criminalPattern:'',
         address: {
-            cep: '58135000',
-            address: 'Alfredo Régis',
-            city: 'Esperanã',
+            cep: '',
+            address: '',
+            city: '',
             complement: '',
-            neighborhood: 'Centro',
-            uf: 'PB'
+            neighborhood: '',
+            uf: ''
         }
     };
 

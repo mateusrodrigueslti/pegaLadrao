@@ -12,14 +12,14 @@ import { MatSnackBar } from '@angular/material';
 export class OccurrencesRegisterComponent implements OnInit {
 
     occurrence: Occurrence = {
-        description: 'Mateus Rodrigues de Oliveira',
+        description: '',
         address: {
-            cep: '58135000',
-            address: 'Alfredo Régis',
-            city: 'Esperanã',
-            complement: 'sds',
-            neighborhood: 'Centro',
-            uf: 'PB'
+            cep: '',
+            address: '',
+            city: '',
+            complement: '',
+            neighborhood: '',
+            uf: ''
         }
     };
 
