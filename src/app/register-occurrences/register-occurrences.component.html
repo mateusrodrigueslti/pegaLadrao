@@ -5,27 +5,27 @@
 
         <mat-card-content>
             <mat-form-field class="col-md-12">
-                <input matInput [(ngModel)]="occurrence.address.address" placeholder="Endereço">
+                <input matInput [(ngModel)]="occurrence.endereco.logradouro" placeholder="Endereço">
             </mat-form-field>
 
             <mat-form-field class="col-md-12">
-                <input matInput [(ngModel)]="occurrence.address.cep" placeholder="CEP">
+                <input matInput [(ngModel)]="occurrence.endereco.cep" placeholder="CEP" mask='99999-999'>
             </mat-form-field>
 
             <mat-form-field class="col-md-12">
-                <input matInput [(ngModel)]="occurrence.address.complement" placeholder="Complemento">
+                <input matInput [(ngModel)]="occurrence.endereco.complemento" placeholder="Complemento">
             </mat-form-field>
 
             <mat-form-field class="col-md-12">
-                <input matInput [(ngModel)]="occurrence.address.neighborhood" placeholder="Bairro">
+                <input matInput [(ngModel)]="occurrence.endereco.bairro" placeholder="Bairro">
             </mat-form-field>
 
             <mat-form-field class="col-md-12">
-                <input matInput [(ngModel)]="occurrence.address.city" placeholder="Cidade">
+                <input matInput [(ngModel)]="occurrence.endereco.cidade" placeholder="Cidade">
             </mat-form-field>
 
             <mat-form-field class="col-md-12">
-                <input matInput [(ngModel)]="occurrence.address.uf" placeholder="UF">
+                <input matInput [(ngModel)]="occurrence.endereco.uf" placeholder="UF">
             </mat-form-field>
 
         </mat-card-content>
@@ -38,20 +38,24 @@
 
         <mat-card-content>
             <mat-form-field class="col-md-12">
-                <input matInput [(ngModel)]="occurrence.hour" placeholder="Data do fato">
+                <input matInput [(ngModel)]="occurrence.data" placeholder="Data do fato" mask='99/99/9999'>
             </mat-form-field>
 
             <mat-form-field class="col-md-12">
-                <input matInput [(ngModel)]="occurrence.date" placeholder="Hora do fato">
+                <input matInput [(ngModel)]="occurrence.hora" placeholder="Hora do fato" mask='99:99'>
             </mat-form-field>
 
             <mat-form-field class="col-md-12">
-                <textarea matInput [(ngModel)]="occurrence.description" placeholder="Descrição do fato"></textarea>
+                <textarea matInput [(ngModel)]="occurrence.descricao" placeholder="Descrição do fato"></textarea>
             </mat-form-field>
         </mat-card-content>
     </mat-card>
 
-    <button class="fab-button2" mat-fab (click)="save()">
-        <i class="material-icons md-light">save</i>
+    <button class="fab-button3" mat-fab (click)="gerarSimilaridade(occurrence.descricao)" title="Gerar similaridade">
+        <i class="material-icons md-light">how_to_reg</i>
     </button>
+
+    <button class="fab-button2" mat-fab (click)="save()" title="Salvar">
+            <i class="material-icons md-light">save</i>
+        </button>
 </div>

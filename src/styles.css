@@ -17,6 +17,12 @@ body{
     bottom: 24px;
 }
 
+.fab-button3 {
+    position: fixed !important;
+    left: 94%;
+    bottom: 90px;
+}
+
 .material-icons.md-light { 
     color: rgba(255, 255, 255, 1); 
 }

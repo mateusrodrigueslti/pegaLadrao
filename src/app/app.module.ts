@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 //Angular Material Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
 
 //Angular Material Components
 import { MatCardModule } from '@angular/material/card';
@@ -21,16 +20,15 @@ import { RoutingModule } from './router/router-routing.module';
 import { HomeComponent } from './home/home.component';
 import { RecommendationGenerateComponent } from './generate-recommendation/generate-recommendation.component';
 import { CriminalsRegisterComponent } from './register-criminals/register-criminals.component';
-import { OccurrencesRegisterComponent } from './register-occurrences/register-occurrences.component';
+import { OccurrencesRegisterComponent, DialogOverviewExampleDialog } from './register-occurrences/register-occurrences.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CriminalsService } from './register-criminals/criminals.service';
-import { Interceptor } from './interceptor';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { OccurencesService } from './register-occurrences/occurences.service';
 import { GenerateRecommendationService } from './generate-recommendation/generate-recommendation.service';
 
-
+import {NgxMaskModule} from 'ngx-mask'
 
 
 @NgModule({
@@ -43,6 +41,7 @@ import { GenerateRecommendationService } from './generate-recommendation/generat
         CriminalsRegisterComponent,
         OccurrencesRegisterComponent,
         SpinnerComponent,
+        DialogOverviewExampleDialog
     ],
     imports: [
         BrowserModule,
@@ -61,19 +60,16 @@ import { GenerateRecommendationService } from './generate-recommendation/generat
         MatDatepickerModule,
         MatDialogModule,
         MatSnackBarModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        NgxMaskModule.forRoot({})
     ],
     providers: [
         CriminalsService,
         OccurencesService,
         GenerateRecommendationService,
         { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: Interceptor,
-            multi: true
-        }],
+        ],
     bootstrap: [AppComponent],
-    entryComponents: [SpinnerComponent]
+    entryComponents: [SpinnerComponent, DialogOverviewExampleDialog]
 })
 export class AppModule { }

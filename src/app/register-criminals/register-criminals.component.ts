@@ -14,26 +14,26 @@ import { MatSnackBar } from '@angular/material';
 export class CriminalsRegisterComponent implements OnInit {
 
     person: Person = {
-        name: '',
-        dateOfBirth: '',
-        rg: '',
-        cpf: '',
-        occupation: '',
-        gender: '',
-        maritalStatus: '',
-        phone: '',
-        mothersName: '',
-        fathersName: '',
-        nationality: '',
-        naturalness: '',
-        criminalPattern:'',
-        address: {
-            cep: '',
-            address: '',
-            city: '',
-            complement: '',
-            neighborhood: '',
-            uf: ''
+        nome: "",
+        dataNascimento: "",
+        rg: "",
+        cpf: "",
+        profissao: "",
+        genero: "",
+        estadoCivil: "",
+        celular: "",
+        nomePai: "",
+        nomeMae: "",
+        nacionalidade: "",
+        naturalidade: "",
+        padraoAtuacaoCriminal: "",
+        endereco:{
+            logradouro: "",
+            cep: "",
+            complemento: "",
+            bairro: "",
+            cidade: "",
+            uf: ""
         }
     };
 
@@ -56,6 +56,9 @@ export class CriminalsRegisterComponent implements OnInit {
     }
 
     save() {
+        
+        this.snackBar.open('Aguarde...');
+
         this.criminalService.save(this.person).subscribe(
             data => {
                 this.snackBar.open('Salvo com sucesso!', 'X', {

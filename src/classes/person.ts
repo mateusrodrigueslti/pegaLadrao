@@ -2,18 +2,18 @@ import { Address } from "./address";
 import { CriminalPattern } from "./criminalPattern";
 
 export class Person {
-    address: Address;
-    criminalPattern: String;
-    name: string;
-    dateOfBirth: string;
+    nome: String;
+    padraoAtuacaoCriminal: String;
+    dataNascimento: string;
     rg: string;
     cpf: string;
-    occupation: string;
-    gender: string;
-    maritalStatus: string;
-    phone: string;
-    mothersName: string;
-    fathersName: string;
-    nationality: string;
-    naturalness: string;
+    profissao: string;
+    genero: string;
+    estadoCivil: string;
+    celular: string;
+    nomeMae: string;
+    nomePai: string;
+    nacionalidade: string;
+    naturalidade: string;
+    endereco: Address;
 }

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Similaridade de crimes</h2>
+<mat-dialog-content>
+    <div *ngFor="let similaridade of similaridades" class="col-sm-12">
+        <strong class="col-md-6">Índice de similaridade: </strong> 
+        <span class="col-md-6">{{similaridade.result}}</span>
+
+        <strong class="col-md-6">Criminoso: </strong> 
+        <span class="col-md-6">{{similaridade.criminoso.nome}}</span>
+
+        <hr>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Ok</button>
+</mat-dialog-actions>

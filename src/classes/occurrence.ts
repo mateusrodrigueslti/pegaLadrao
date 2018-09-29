@@ -1,6 +1,8 @@
 import { Address } from "./address";
 
 export class Occurrence {
-    address: Address;
-    description: string;
+    endereco: Address;
+    descricao: string;
+    data: String;
+    hora: String
 }
