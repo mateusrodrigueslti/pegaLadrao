@@ -13,6 +13,6 @@ export class OccurencesService {
     }
 
     get(occurrence: string) {
-        return this.http.get(AppSettings.API_ENDPOINT + '/recomendacao?padraoCriminal='+ occurrence);
+        return this.http.get<any[]>(AppSettings.API_ENDPOINT + '/recomendacao?padraoCriminal='+ occurrence);
     }
 }
