@@ -76,7 +76,7 @@ export class OccurrencesRegisterComponent implements OnInit {
 
         this.openSpinner();
 
-        this.occurrenceService.get(description).subscribe(
+        this.occurrenceService.getSimilaridade(description).subscribe(
             data => {
                 if(data.length){
                     this.closeSpinner();

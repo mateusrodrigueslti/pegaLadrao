@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatIconModule, MatDatepickerModule, MatDatepicker, MAT_DATE_LOCALE, MatNativeDateModule, MatDialogModule, MatSnackBarModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatDialogModule, MatSnackBarModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -22,13 +22,17 @@ import { RecommendationGenerateComponent } from './generate-recommendation/gener
 import { CriminalsRegisterComponent } from './register-criminals/register-criminals.component';
 import { OccurrencesRegisterComponent, DialogOverviewExampleDialog } from './register-occurrences/register-occurrences.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CriminalsService } from './register-criminals/criminals.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { OccurencesService } from './register-occurrences/occurences.service';
 import { GenerateRecommendationService } from './generate-recommendation/generate-recommendation.service';
 
-import {NgxMaskModule} from 'ngx-mask'
+import {NgxMaskModule} from 'ngx-mask';
+import { CriminososComponent } from './criminosos/criminosos.component'
+import {MatPaginatorModule, 
+    MatSortModule, MatTableModule } from "@angular/material";
+import { OcorrenciasComponent } from './ocorrencias/ocorrencias.component';
 
 
 @NgModule({
@@ -41,7 +45,9 @@ import {NgxMaskModule} from 'ngx-mask'
         CriminalsRegisterComponent,
         OccurrencesRegisterComponent,
         SpinnerComponent,
-        DialogOverviewExampleDialog
+        DialogOverviewExampleDialog,
+        CriminososComponent,
+        OcorrenciasComponent
     ],
     imports: [
         BrowserModule,
@@ -61,6 +67,9 @@ import {NgxMaskModule} from 'ngx-mask'
         MatDialogModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
         NgxMaskModule.forRoot({})
     ],
     providers: [

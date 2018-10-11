@@ -25,4 +25,12 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['recommendation']);
     }
 
+    sendMeToCriminosos() {
+        this.router.navigate(['criminosos']);
+    }
+
+    sendMeToOcorrencia() {
+        this.router.navigate(['ocorrencia']);
+    }
+
 }

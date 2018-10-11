@@ -1,0 +1,31 @@
+<mat-form-field class="col-md-12">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Digite um nome para filtar">
+</mat-form-field>
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort matSortActive="descricao" matSortDirection="asc">
+
+        <ng-container matColumnDef="descricao">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
+            <mat-cell *matCellDef="let ocorrencia" (click)="console(criminoso)">{{ocorrencia.descricao}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="data">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
+            <mat-cell *matCellDef="let ocorrencia" (click)="console(criminoso)">{{ocorrencia.data | mask: '00/00/0000'}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="hora">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Hora</mat-header-cell>
+            <mat-cell *matCellDef="let ocorrencia" (click)="console(criminoso)">{{ocorrencia.hora | mask: '00:00'}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+    <button class="fab-button2" mat-fab (click)="novaOcorrencia()">
+        <i class="material-icons md-light">note_add</i>
+    </button>
+</div>

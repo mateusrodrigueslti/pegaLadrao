@@ -12,7 +12,11 @@ export class OccurencesService {
         return this.http.post(AppSettings.API_ENDPOINT + '/ocorrencia', occurrence);
     }
 
-    get(occurrence: string) {
+    getSimilaridade(occurrence: string) {
         return this.http.get<any[]>(AppSettings.API_ENDPOINT + '/recomendacao?padraoCriminal='+ occurrence);
+    }
+
+    getAll() {
+        return this.http.get<any[]>(AppSettings.API_ENDPOINT + '/ocorrencia');
     }
 }

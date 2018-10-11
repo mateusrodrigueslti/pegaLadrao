@@ -13,7 +13,7 @@ export class CriminalsService {
     }
 
     getAll() {
-        return this.http.get(AppSettings.API_ENDPOINT + '/criminoso');
+        return this.http.get<any[]>(AppSettings.API_ENDPOINT + '/criminoso');
     }
 
 }
