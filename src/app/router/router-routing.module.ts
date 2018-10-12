@@ -8,6 +8,7 @@ import { RecommendationGenerateComponent } from '../generate-recommendation/gene
 import { CriminalsRegisterComponent } from '../register-criminals/register-criminals.component';
 import { CriminososComponent } from '../criminosos/criminosos.component';
 import { OcorrenciasComponent } from '../ocorrencias/ocorrencias.component';
+import { Person } from '../../classes/person';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -5,6 +5,7 @@ import { OccurencesService } from './occurences.service';
 import { MatSnackBar, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { log } from 'util';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { DataServiceService } from '../data-service.service';
 
 @Component({
     selector: 'app-register-occurrences',
@@ -33,9 +34,11 @@ export class OccurrencesRegisterComponent implements OnInit {
         private router: Router, 
         private occurrenceService: OccurencesService,
         public snackBar: MatSnackBar,
-        public dialog: MatDialog) { }
+        public dialog: MatDialog,
+        private dataService: DataServiceService) { }
 
     ngOnInit() {
+        this.occurrence = this.dataService.ocorrencia;
     }
 
     openSpinner() {

@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { CriminalsService } from '../register-criminals/criminals.service';
 import { Router } from '@angular/router';
+import { DataServiceService } from '../data-service.service';
 
 
 @Component({
@@ -10,14 +11,17 @@ import { Router } from '@angular/router';
     styleUrls: ['./criminosos.component.css']
 })
 export class CriminososComponent implements OnInit {
+    
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     dataSource;
     displayedColumns = ["nome", "rg","cpf"];
 
-
-    constructor(private criminalService: CriminalsService, private router: Router) {}
+    constructor(
+        private criminalService: CriminalsService, 
+        private router: Router,
+        private dataService: DataServiceService) {}
 
     ngOnInit() {
         this.criminalService.getAll().subscribe(
@@ -30,9 +34,9 @@ export class CriminososComponent implements OnInit {
         );
     }
 
-    console(d){
-        console.log(d);
-        
+    irParaDetalhes(criminoso){
+        this.dataService.criminoso = criminoso;
+        this.router.navigate(['criminals']);
     }
 
     applyFilter(filterValue: string) {
@@ -43,7 +47,8 @@ export class CriminososComponent implements OnInit {
         }
     }
 
-    novaCriminoso(){
+    novoCriminoso(){
+        this.dataService.limparDados();
         this.router.navigate(['criminals']);
     }
 

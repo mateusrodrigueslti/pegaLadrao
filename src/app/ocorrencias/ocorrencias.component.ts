@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
 import { OccurencesService } from '../register-occurrences/occurences.service';
 import { Router } from '@angular/router';
+import { DataServiceService } from '../data-service.service';
 
 @Component({
     selector: 'app-ocorrencias',
@@ -15,7 +16,10 @@ export class OcorrenciasComponent implements OnInit {
     dataSource;
     displayedColumns = ["descricao", "data", "hora"];
 
-    constructor(private occurencesService : OccurencesService, private router: Router) { }
+    constructor(
+        private occurencesService : OccurencesService, 
+        private router: Router,
+        private dataService: DataServiceService) { }
 
     ngOnInit() {
         this.occurencesService.getAll().subscribe(
@@ -37,6 +41,12 @@ export class OcorrenciasComponent implements OnInit {
     }
 
     novaOcorrencia(){
+        this.dataService.limparDados();
+        this.router.navigate(['occurrences']);
+    }
+
+    editarOcorrencia(ocorrencia){
+        this.dataService.ocorrencia = ocorrencia;
         this.router.navigate(['occurrences']);
     }
 

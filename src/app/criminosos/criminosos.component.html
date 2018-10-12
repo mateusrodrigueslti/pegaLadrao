@@ -7,17 +7,17 @@
 
         <ng-container matColumnDef="nome">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
-            <mat-cell *matCellDef="let criminoso" (click)="console(criminoso)">{{criminoso.nome}}</mat-cell>
+            <mat-cell *matCellDef="let criminoso" (click)="irParaDetalhes(criminoso)">{{criminoso.nome}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="rg">
             <mat-header-cell *matHeaderCellDef mat-sort-header>RG</mat-header-cell>
-            <mat-cell *matCellDef="let criminoso" (click)="console(criminoso)">{{criminoso.rg | mask: '0.000.000'}}</mat-cell>
+            <mat-cell *matCellDef="let criminoso" (click)="irParaDetalhes(criminoso)">{{criminoso.rg | mask: '0.000.000'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="cpf">
             <mat-header-cell *matHeaderCellDef mat-sort-header>CPF</mat-header-cell>
-            <mat-cell *matCellDef="let criminoso" (click)="console(criminoso)">{{criminoso.cpf | mask:'000.000.000-00'}}</mat-cell>
+            <mat-cell *matCellDef="let criminoso" (click)="irParaDetalhes(criminoso)">{{criminoso.cpf | mask:'000.000.000-00'}}</mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -26,7 +26,7 @@
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
-    <button class="fab-button2" mat-fab (click)="novaCriminoso()">
+    <button class="fab-button2" mat-fab (click)="novoCriminoso()">
         <i class="material-icons md-light">note_add</i>
     </button>
 </div>

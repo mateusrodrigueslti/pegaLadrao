@@ -33,6 +33,7 @@ import { CriminososComponent } from './criminosos/criminosos.component'
 import {MatPaginatorModule, 
     MatSortModule, MatTableModule } from "@angular/material";
 import { OcorrenciasComponent } from './ocorrencias/ocorrencias.component';
+import { DataServiceService } from './data-service.service';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { OcorrenciasComponent } from './ocorrencias/ocorrencias.component';
         CriminalsService,
         OccurencesService,
         GenerateRecommendationService,
+        DataServiceService,
         { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
         ],
     bootstrap: [AppComponent],

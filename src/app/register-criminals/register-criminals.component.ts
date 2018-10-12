@@ -1,9 +1,9 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Person } from '../../classes/person';
 import { CriminalsService } from './criminals.service';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { MatSnackBar } from '@angular/material';
+import { DataServiceService } from '../data-service.service';
 
 @Component({
     selector: 'app-register-criminals',
@@ -37,22 +37,19 @@ export class CriminalsRegisterComponent implements OnInit {
         }
     };
 
-    constructor(private router: Router, private criminalService: CriminalsService, private snackBar: MatSnackBar) { }
+    constructor(
+        private activatedRoute: ActivatedRoute, 
+        private router: Router, 
+        private criminalService: CriminalsService, 
+        private snackBar: MatSnackBar,
+        private dataService: DataServiceService) { }
 
     ngOnInit() {
+        this.person = this.dataService.criminoso;
     }
 
     sendMeToHome() {
         this.router.navigate(['home']);
-    }
-
-    getAll() {
-        this.criminalService.getAll().subscribe(
-            data => {
-                console.log(data)
-            },
-            err => console.error(err)
-        );
     }
 
     save() {
@@ -64,6 +61,8 @@ export class CriminalsRegisterComponent implements OnInit {
                 this.snackBar.open('Salvo com sucesso!', 'X', {
                     duration: 3000,
                 });
+                this.dataService.limparDados();
+                this.router.navigate(['criminosos']);
             },
             err => console.error(err)
         )
