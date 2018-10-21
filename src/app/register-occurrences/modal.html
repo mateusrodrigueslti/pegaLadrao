@@ -1,15 +1,21 @@
 <h2 mat-dialog-title>Similaridade de crimes</h2>
 <mat-dialog-content>
-    <div *ngFor="let similaridade of similaridades" class="col-sm-12">
-        <strong class="col-md-6">Índice de similaridade: </strong> 
-        <span class="col-md-6">{{similaridade.result}}</span>
-
-        <strong class="col-md-6">Criminoso: </strong> 
-        <span class="col-md-6">{{similaridade.criminoso.nome}}</span>
-
-        <hr>
-    </div>
+    <table class="table table-hover">
+        <tr>
+            <th>Nome</th>
+            <th>Índice de Similaridade</th>
+            <th>Participou do crime ?</th>
+        </tr>
+        <tr *ngFor="let similaridade of similaridades">
+            <td>{{similaridade.criminoso.nome}}</td>
+            <td>{{similaridade.result}}</td>
+            <td>
+                <mat-checkbox [(ngModel)]="similaridade.participouCrime"></mat-checkbox>
+            </td>
+        </tr>
+    </table>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Ok</button>
+    <button mat-button mat-dialog-close>Ok</button>
+    <button mat-button>Salvar</button>
 </mat-dialog-actions>

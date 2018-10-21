@@ -49,6 +49,9 @@
                 <textarea matInput [(ngModel)]="occurrence.descricao" placeholder="Descrição do fato"></textarea>
             </mat-form-field>
         </mat-card-content>
+        <mat-card-actions *ngIf="podeEditar">
+            <button mat-raised-button color="warn" (click)="deletar(occurrence.id)">APAGAR</button>
+        </mat-card-actions>
     </mat-card>
 
     <button class="fab-button3" mat-fab (click)="gerarSimilaridade(occurrence.descricao)" title="Gerar similaridade">
@@ -56,6 +59,6 @@
     </button>
 
     <button class="fab-button2" mat-fab (click)="save()" title="Salvar">
-            <i class="material-icons md-light">save</i>
-        </button>
+        <i class="material-icons md-light">save</i>
+    </button>
 </div>

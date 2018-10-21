@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatIconModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatDialogModule, MatSnackBarModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatDialogModule, MatSnackBarModule, MatProgressSpinnerModule, MatSidenavModule, MatCheckboxModule, MatTabsModule, MatListModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -34,6 +34,7 @@ import {MatPaginatorModule,
     MatSortModule, MatTableModule } from "@angular/material";
 import { OcorrenciasComponent } from './ocorrencias/ocorrencias.component';
 import { DataServiceService } from './data-service.service';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { DataServiceService } from './data-service.service';
         SpinnerComponent,
         DialogOverviewExampleDialog,
         CriminososComponent,
-        OcorrenciasComponent
+        OcorrenciasComponent,
+        SnackbarComponent
     ],
     imports: [
         BrowserModule,
@@ -71,6 +73,10 @@ import { DataServiceService } from './data-service.service';
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
+        MatSidenavModule,
+        MatCheckboxModule,
+        MatTabsModule,
+        MatListModule,
         NgxMaskModule.forRoot({})
     ],
     providers: [

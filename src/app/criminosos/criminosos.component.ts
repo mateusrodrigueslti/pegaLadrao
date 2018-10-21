@@ -34,7 +34,8 @@ export class CriminososComponent implements OnInit {
         );
     }
 
-    irParaDetalhes(criminoso){
+    editarDetalhes(criminoso){
+        this.dataService.podeEditar = true;
         this.dataService.criminoso = criminoso;
         this.router.navigate(['criminals']);
     }

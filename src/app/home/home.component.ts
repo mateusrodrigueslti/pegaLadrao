@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppModule } from '../app.module';
+import { AppComponent } from '../app.component';
 
 @Component({
     selector: 'app-home',
@@ -8,28 +10,19 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private appComponent: AppComponent) { }
 
     ngOnInit() {
+        
     }
-
-    sendMeToCriminalsRegister() {
-        this.router.navigate(['criminals']);
-    }
-
-    sendMeToOccurrences() {
-        this.router.navigate(['occurrences']);
-    }
-
-    sendMeToRecommendentions() {
-        this.router.navigate(['recommendation']);
-    }
-
+    
     sendMeToCriminosos() {
+        this.appComponent.opened = true;
         this.router.navigate(['criminosos']);
     }
 
     sendMeToOcorrencia() {
+        this.appComponent.opened = true;
         this.router.navigate(['ocorrencia']);
     }
 

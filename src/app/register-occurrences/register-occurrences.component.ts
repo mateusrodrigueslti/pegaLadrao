@@ -27,6 +27,7 @@ export class OccurrencesRegisterComponent implements OnInit {
         data: "",
         hora: ""
     };
+    podeEditar: boolean;
 
     dialogRef: MatDialogRef<SpinnerComponent, any>;
 
@@ -39,6 +40,7 @@ export class OccurrencesRegisterComponent implements OnInit {
 
     ngOnInit() {
         this.occurrence = this.dataService.ocorrencia;
+        this.podeEditar = this.dataService.podeEditar;
     }
 
     openSpinner() {
@@ -48,10 +50,6 @@ export class OccurrencesRegisterComponent implements OnInit {
 
     closeSpinner() {
         this.snackBar.dismiss();
-    }
-
-    sendMeToHome() {
-        this.router.navigate(['home']);
     }
 
     save() {
@@ -64,7 +62,7 @@ export class OccurrencesRegisterComponent implements OnInit {
                 this.closeSpinner();
 
                 this.snackBar.open('Salvo com sucesso ! Que tal gerar um recomendação ?', 'X', {
-                    duration: 3000,
+                    duration: 3000
                 });
             },
             err => {
@@ -101,10 +99,36 @@ export class OccurrencesRegisterComponent implements OnInit {
     
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-    
         dialogConfig.data = data;
+        dialogConfig.height = '90%';
+        dialogConfig.width = '80%';
+        dialogConfig.disableClose = true;
+        dialogConfig.hasBackdrop = true;
     
-        this.dialog.open(DialogOverviewExampleDialog, dialogConfig);
+        let dialogRef =  this.dialog.open(DialogOverviewExampleDialog, dialogConfig);
+
+        dialogRef.backdropClick().subscribe(() => {
+            console.log(dialogConfig.data);
+            dialogRef.close();
+        })
+    }
+
+    deletar(ocorrenciaId){
+        this.occurrenceService.deletar(ocorrenciaId).subscribe(
+            data => {
+                this.router.navigate(['ocorrencia']);
+                this.closeSpinner();
+                this.snackBar.open('Registro apagado com sucesso!', 'X', {
+                    duration: 3000,
+                });
+            },
+            err => {
+                this.closeSpinner()
+                this.snackBar.open('Ocorreu um erro ao apagar o registro.', 'X', {
+                    duration: 3000,
+                });
+            }
+        )
     }
 
 }

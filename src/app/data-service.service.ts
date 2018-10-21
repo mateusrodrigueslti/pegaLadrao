@@ -6,11 +6,14 @@ import { Occurrence } from '../classes/occurrence';
 export class DataServiceService {
 
     criminoso: Person;
-    ocorrencia: Occurrence
+    ocorrencia: Occurrence;
+    podeEditar: boolean;
     constructor() { }
 
     limparDados() {
+        this.podeEditar = false;
         this.criminoso = {
+            id:0,
             nome: "",
             dataNascimento: "",
             rg: "",

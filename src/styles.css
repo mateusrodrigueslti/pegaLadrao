@@ -13,14 +13,14 @@ body{
 
 .fab-button2 {
     position: fixed !important;
-    left: 94%;
-    bottom: 24px;
+    bottom: 3%;
+    right: 3%;
 }
 
 .fab-button3 {
     position: fixed !important;
-    left: 94%;
-    bottom: 90px;
+    bottom: 14%;
+    right: 3%;
 }
 
 .material-icons.md-light { 

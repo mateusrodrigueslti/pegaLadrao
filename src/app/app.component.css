@@ -1,0 +1,17 @@
+.side-bar-color{
+    background: #673ab7;
+}
+
+.bg{
+    width: 10%;
+    height: 100%;
+    overflow: auto;
+}
+
+.full-heigth {
+    height: 100vh;
+}
+
+.a-color{
+    color: white;
+}

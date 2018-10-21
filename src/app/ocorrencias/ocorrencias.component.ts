@@ -47,6 +47,7 @@ export class OcorrenciasComponent implements OnInit {
 
     editarOcorrencia(ocorrencia){
         this.dataService.ocorrencia = ocorrencia;
+        this.dataService.podeEditar = true;
         this.router.navigate(['occurrences']);
     }
 

@@ -13,7 +13,7 @@ import { Person } from '../../classes/person';
 const appRoutes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent },
+    { path: 'inicio', component: HomeComponent },
     { path: 'occurrences', component: OccurrencesRegisterComponent },
     { path: 'criminals', component: CriminalsRegisterComponent },
     { path: 'recommendation', component: RecommendationGenerateComponent },

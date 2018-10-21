@@ -19,4 +19,12 @@ export class OccurencesService {
     getAll() {
         return this.http.get<any[]>(AppSettings.API_ENDPOINT + '/ocorrencia');
     }
+
+    deletar(ocorrenciaId) {
+        return this.http.delete(AppSettings.API_ENDPOINT + '/ocorrencia?id=' + ocorrenciaId);
+    }
+
+    associarCrime(req) {
+        return this.http.post(AppSettings.API_ENDPOINT + '/ocorrencia', req);
+    }
 }

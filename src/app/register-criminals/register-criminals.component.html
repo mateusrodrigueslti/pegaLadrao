@@ -1,107 +1,143 @@
 <div class="container-fluid">
-    <mat-card class="mb-2">
-        <mat-card-header>
-            <mat-card-title>Dados Pessoais</mat-card-title>
-        </mat-card-header>
+    <mat-tab-group>
+        <mat-tab label="Dados">
+            <mat-card class="mb-2">
+                <mat-card-header>
+                    <mat-card-title>Dados Pessoais</mat-card-title>
+                </mat-card-header>
 
-        <mat-card-content>
-            <mat-form-field class="col-md-3 col-sm-12">
-                <input matInput placeholder="Nome" [(ngModel)]="person.nome">
+                <mat-card-content>
+                    <mat-form-field class="col-md-3 col-sm-12">
+                        <input matInput placeholder="Nome" [(ngModel)]="person.nome">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-md-2 col-sm-12">
+                        <input matInput placeholder="Data de Nascimento" [(ngModel)]="person.dataNascimento" mask='99/99/9999'>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput placeholder="Nº RG" [(ngModel)]="person.rg">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput placeholder="CPF" [(ngModel)]="person.cpf" mask='999.999.999-99'>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput placeholder="Profissão" [(ngModel)]="person.profissao">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput placeholder="Sexo" [(ngModel)]="person.genero">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput placeholder="Estado cívil" [(ngModel)]="person.estadoCivil">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput placeholder="Celular" [(ngModel)]="person.celular" mask='(99)99999-9999'>
+                    </mat-form-field>
+                </mat-card-content>
+
+            </mat-card>
+
+            <mat-card class="mb-2">
+                <mat-card-header>
+                    <mat-card-title>Filiação</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.nomeMae" placeholder="Nome da mãe">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.nomePai" placeholder="Nome do pai">
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="mb-2">
+                <mat-card-header>
+                    <mat-card-title>Endereço</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.endereco.logradouro" placeholder="Endereço">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.endereco.cep" placeholder="CEP" mask='99999-999'>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.endereco.complemento" placeholder="Complemento">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.endereco.bairro" placeholder="Bairro">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.endereco.cidade" placeholder="Cidade">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.endereco.uf" placeholder="UF">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.naturalidade" placeholder="Naturalidade">
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-12">
+                        <input matInput [(ngModel)]="person.nacionalidade" placeholder="Nacionalidade">
+                    </mat-form-field>
+                </mat-card-content>
+
+                <mat-form-field class="col-md-12">
+                    <textarea matInput [(ngModel)]="person.padraoAtuacaoCriminal" placeholder="Descrição do fato"></textarea>
+                </mat-form-field>
+
+                <mat-card-actions *ngIf="podeEditar">
+                    <button mat-raised-button color="warn" (click)="deletar(person.id)">APAGAR</button>
+                </mat-card-actions>
+            </mat-card>
+
+            <button class="fab-button2" mat-fab (click)="save()">
+                <i class="material-icons md-light">save</i>
+            </button>
+        </mat-tab>
+        <mat-tab label="Acusações" *ngIf="podeEditar && temCrime">
+            <mat-form-field class="col-md-12">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Digite um nome para filtar">
             </mat-form-field>
+            <div class="mat-elevation-z8">
+                <mat-table [dataSource]="dataSource" matSort matSortActive="nome" matSortDirection="asc">
 
-            <mat-form-field class="col-md-2 col-sm-12">
-                <input matInput placeholder="Data de Nascimento" [(ngModel)]="person.dataNascimento" mask='99/99/9999'>
-            </mat-form-field>
+                    <ng-container matColumnDef="Data">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
+                        <mat-cell *matCellDef="let crime">{{crime.data | mask: '00/00/0000'}}</mat-cell>
+                    </ng-container>
 
-            <mat-form-field class="col-sm-12">
-                <input matInput placeholder="Nº RG" [(ngModel)]="person.rg">
-            </mat-form-field>
+                    <ng-container matColumnDef="Hora">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Hora</mat-header-cell>
+                        <mat-cell *matCellDef="let crime">{{crime.hora | mask: '00:00'}}</mat-cell>
+                    </ng-container>
 
-            <mat-form-field class="col-sm-12">
-                <input matInput placeholder="CPF" [(ngModel)]="person.cpf" mask='999.999.999-99'>
-            </mat-form-field>
+                    <ng-container matColumnDef="Fato">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Fato</mat-header-cell>
+                        <mat-cell *matCellDef="let crime">{{crime.descricao}}</mat-cell>
+                    </ng-container>
 
-            <mat-form-field class="col-sm-12">
-                <input matInput placeholder="Profissão" [(ngModel)]="person.profissao">
-            </mat-form-field>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
 
-            <mat-form-field class="col-sm-12">
-                <input matInput placeholder="Sexo" [(ngModel)]="person.genero">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput placeholder="Estado cívil" [(ngModel)]="person.estadoCivil">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput placeholder="Celular" [(ngModel)]="person.celular" mask='(99)99999-9999'>
-            </mat-form-field>
-        </mat-card-content>
-
-    </mat-card>
-
-    <mat-card class="mb-2">
-        <mat-card-header>
-            <mat-card-title>Filiação</mat-card-title>
-        </mat-card-header>
-
-        <mat-card-content>
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.nomeMae" placeholder="Nome da mãe">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.nomePai" placeholder="Nome do pai">
-            </mat-form-field>
-        </mat-card-content>
-    </mat-card>
-
-    <mat-card class="mb-2">
-        <mat-card-header>
-            <mat-card-title>Endereço</mat-card-title>
-        </mat-card-header>
-
-        <mat-card-content>
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.endereco.logradouro" placeholder="Endereço">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.endereco.cep" placeholder="CEP" mask='99999-999'>
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.endereco.complemento" placeholder="Complemento">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.endereco.bairro" placeholder="Bairro">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.endereco.cidade" placeholder="Cidade">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.endereco.uf" placeholder="UF">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.naturalidade" placeholder="Naturalidade">
-            </mat-form-field>
-
-            <mat-form-field class="col-sm-12">
-                <input matInput [(ngModel)]="person.nacionalidade" placeholder="Nacionalidade">
-            </mat-form-field>
-        </mat-card-content>
-
-    </mat-card>
-
-    <mat-form-field class="col-md-12">
-        <textarea matInput [(ngModel)]="person.padraoAtuacaoCriminal" placeholder="Descrição do fato"></textarea>
-    </mat-form-field>
-
-    <button class="fab-button2" mat-fab (click)="save()">
-        <i class="material-icons md-light">save</i>
-    </button>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 </div>

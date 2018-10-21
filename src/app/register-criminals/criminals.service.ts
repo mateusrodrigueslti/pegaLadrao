@@ -16,4 +16,12 @@ export class CriminalsService {
         return this.http.get<any[]>(AppSettings.API_ENDPOINT + '/criminoso');
     }
 
+    deletar(criminosoId) {
+        return this.http.delete(AppSettings.API_ENDPOINT + '/criminoso?id=' + criminosoId);
+    }
+
+    buscarCrimes(criminosoID){
+        return this.http.get<any[]>(AppSettings.API_ENDPOINT + '/recomendacao/crimes?criminosoID=' + criminosoID);
+    }
+
 }
