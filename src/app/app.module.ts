@@ -34,7 +34,6 @@ import {MatPaginatorModule,
     MatSortModule, MatTableModule } from "@angular/material";
 import { OcorrenciasComponent } from './ocorrencias/ocorrencias.component';
 import { DataServiceService } from './data-service.service';
-import { SnackbarComponent } from './snackbar/snackbar.component';
 
 
 @NgModule({
@@ -49,8 +48,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
         SpinnerComponent,
         DialogOverviewExampleDialog,
         CriminososComponent,
-        OcorrenciasComponent,
-        SnackbarComponent
+        OcorrenciasComponent
     ],
     imports: [
         BrowserModule,
