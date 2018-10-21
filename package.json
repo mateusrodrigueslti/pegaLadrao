@@ -29,10 +29,13 @@
     "@angular/platform-browser-dynamic": "^5.2.11",
     "@angular/router": "^5.2.11",
     "core-js": "^2.5.7",
+    "cryptiles": "^4.1.2",
     "express": "^4.16.4",
     "ngx-mask": "^6.5.18",
     "path": "^0.12.7",
+    "randomatic": "^3.1.0",
     "rxjs": "^5.5.12",
+    "timespan": "^2.3.0",
     "typescript": "~2.5.3",
     "zone.js": "^0.8.19"
   },
