@@ -54,7 +54,7 @@
         </mat-card-actions>
     </mat-card>
 
-    <button class="fab-button3" mat-fab (click)="gerarSimilaridade(occurrence.descricao)" title="Gerar similaridade">
+    <button class="fab-button3" *ngIf="podeEditar" mat-fab (click)="gerarSimilaridade(occurrence.descricao)" title="Gerar similaridade">
         <i class="material-icons md-light">how_to_reg</i>
     </button>
 

@@ -38,6 +38,7 @@ export class DataServiceService {
         };
 
         this.ocorrencia = {
+            id:0,
             endereco: {
                 logradouro: "",
                 cep: "",

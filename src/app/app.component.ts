@@ -29,16 +29,15 @@ export class AppComponent implements OnInit {
         router.events
             .filter(event => event instanceof NavigationStart)
             .subscribe((event: NavigationStart) => {
-                console.log(event);
 
-                if(event.url === "/login" || event.url === "/"){
-                    
+                if (event.url === "/login" || event.url === "/") {
+
                     this.escondeMenu = false;
                 }
-                else{
+                else {
                     this.escondeMenu = true;
                 }
-                
+
                 if (window.innerWidth < 768) {
                     this.opened = false;
                 }
@@ -56,7 +55,7 @@ export class AppComponent implements OnInit {
         }
     }
 
-    logout(){
+    logout() {
         this.router.navigate(['login'])
     }
 

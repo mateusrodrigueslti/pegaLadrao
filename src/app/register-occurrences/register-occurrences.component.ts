@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Occurrence } from '../../classes/occurrence';
 import { OccurencesService } from './occurences.service';
 import { MatSnackBar, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
-import { log } from 'util';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { DataServiceService } from '../data-service.service';
 
@@ -15,6 +14,7 @@ import { DataServiceService } from '../data-service.service';
 export class OccurrencesRegisterComponent implements OnInit {
 
     occurrence: Occurrence = {
+        id:0,
         endereco: {
             logradouro: "",
             cep: "",
@@ -31,8 +31,10 @@ export class OccurrencesRegisterComponent implements OnInit {
 
     dialogRef: MatDialogRef<SpinnerComponent, any>;
 
+    similaridades: any[];
+
     constructor(
-        private router: Router, 
+        private router: Router,
         private occurrenceService: OccurencesService,
         public snackBar: MatSnackBar,
         public dialog: MatDialog,
@@ -44,7 +46,7 @@ export class OccurrencesRegisterComponent implements OnInit {
     }
 
     openSpinner() {
-        
+
         this.snackBar.open('Aguarde...');
     }
 
@@ -55,10 +57,10 @@ export class OccurrencesRegisterComponent implements OnInit {
     save() {
 
         this.openSpinner();
-        
+
         this.occurrenceService.save(this.occurrence).subscribe(
             data => {
-                
+
                 this.closeSpinner();
 
                 this.snackBar.open('Salvo com sucesso ! Que tal gerar um recomendação ?', 'X', {
@@ -77,13 +79,13 @@ export class OccurrencesRegisterComponent implements OnInit {
 
         this.openSpinner();
 
-        this.occurrenceService.getSimilaridade(description).subscribe(
+        this.occurrenceService.getSimilaridade(description, this.occurrence.id).subscribe(
             data => {
-                if(data.length){
+                if (data.length) {
                     this.closeSpinner();
                     this.openDialog(data);
                 }
-                else{
+                else {
                     this.closeSpinner();
                     this.snackBar.open('Não há dado suficientes para realizar uma análise', 'X', {
                         duration: 3000,
@@ -96,24 +98,27 @@ export class OccurrencesRegisterComponent implements OnInit {
 
     openDialog(data) {
         const dialogConfig = new MatDialogConfig();
-    
+
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.data = data;
-        dialogConfig.height = '90%';
+        dialogConfig.data = {similaridades:data, ocorrenciaID:this.occurrence.id};
+        //dialogConfig.height = '90%';
         dialogConfig.width = '80%';
         dialogConfig.disableClose = true;
         dialogConfig.hasBackdrop = true;
-    
-        let dialogRef =  this.dialog.open(DialogOverviewExampleDialog, dialogConfig);
+
+        let dialogRef = this.dialog.open(DialogOverviewExampleDialog, dialogConfig);
 
         dialogRef.backdropClick().subscribe(() => {
-            console.log(dialogConfig.data);
             dialogRef.close();
         })
+
+        dialogRef.afterClosed().subscribe(data => {
+            console.log('The dialog was closed', dialogConfig.data);
+        });
     }
 
-    deletar(ocorrenciaId){
+    deletar(ocorrenciaId) {
         this.occurrenceService.deletar(ocorrenciaId).subscribe(
             data => {
                 this.router.navigate(['ocorrencia']);
@@ -136,19 +141,51 @@ export class OccurrencesRegisterComponent implements OnInit {
 @Component({
     selector: 'modal',
     templateUrl: 'modal.html',
-  })
-  export class DialogOverviewExampleDialog {
-  
+})
+export class DialogOverviewExampleDialog {
+
     similaridades: any[] = [];
+    participantesCrime: number[] = [];
+    ocorrenciaID: number;
 
     constructor(
-      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-      @Inject(MAT_DIALOG_DATA) data) {
-        this.similaridades = data;
-      }
-  
-    onNoClick(): void {
-      this.dialogRef.close();
+        private snackbar: MatSnackBar,
+        private service: OccurencesService,
+        public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+        @Inject(MAT_DIALOG_DATA) data) {
+        this.similaridades = data.similaridades;
+        this.ocorrenciaID = data.ocorrenciaID
     }
-  
-  }
+
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
+
+    salvar() {
+        this.similaridades.forEach(element => {
+            if(element.participouCrime){
+                this.participantesCrime.push(element.criminoso.id);
+            }
+        });
+
+        let req = {
+            criminososId: this.participantesCrime,
+            ocorrenciaId: this.ocorrenciaID
+        }
+
+        this.snackbar.open('Aguarde...');
+
+        this.service.associarCrime(req).subscribe(
+            data => {
+                this.snackbar.dismiss();
+                this.dialogRef.close();
+            },
+            err => {
+                this.snackbar.open('Ocorreu um erro na solicitação.' + err, 'X', {
+                    duration: 3000,
+                });
+            }
+        )
+    }
+
+}

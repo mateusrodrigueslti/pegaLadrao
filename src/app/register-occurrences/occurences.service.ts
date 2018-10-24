@@ -12,8 +12,8 @@ export class OccurencesService {
         return this.http.post(AppSettings.API_ENDPOINT + '/ocorrencia', occurrence);
     }
 
-    getSimilaridade(occurrence: string) {
-        return this.http.get<any[]>(AppSettings.API_ENDPOINT + '/recomendacao?padraoCriminal='+ occurrence);
+    getSimilaridade(occurrence: string, ocorrenciaID:number) {
+        return this.http.get<any[]>(AppSettings.API_ENDPOINT + '/recomendacao?padraoCriminal='+ occurrence+'&ocorrenciaID='+ ocorrenciaID);
     }
 
     getAll() {
@@ -25,6 +25,6 @@ export class OccurencesService {
     }
 
     associarCrime(req) {
-        return this.http.post(AppSettings.API_ENDPOINT + '/ocorrencia', req);
+        return this.http.post(AppSettings.API_ENDPOINT + '/recomendacao', req);
     }
 }
