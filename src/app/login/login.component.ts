@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     }
 
     sendMeHome() {
-        this.router.navigate(['home']);
+        this.router.navigate(['inicio']);
     }
 
 }

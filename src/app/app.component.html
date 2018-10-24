@@ -5,12 +5,12 @@
         </button>
         <span>Pega Ladrão</span>
         <span class="spacer"></span>
-        <mat-icon>lock</mat-icon>
+        <mat-icon (click)="logout()">lock</mat-icon>
     </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-drawer-container class="full-heigth">
-    <mat-drawer [(mode)]="navMode" [opened]="opened" class="side-bar-color" fullscreen>
+    <mat-drawer [(mode)]="navMode" [opened]="opened" class="side-bar-color" *ngIf="escondeMenu">
         <mat-nav-list>
             <a mat-list-item routerLink="{{link.path}}" *ngFor="let link of rotas" class="a-color">
                 <mat-icon>{{link.icone}}</mat-icon>   {{link.label}}

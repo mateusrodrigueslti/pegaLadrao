@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit, HostListener } from '@angular/core';
 import { MatSidenavModule, MatSidenavContainer } from '@angular/material';
 import { Router, NavigationStart } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import { log } from 'util';
 
 
 @Component({
@@ -17,21 +18,32 @@ export class AppComponent implements OnInit {
 
     navMode = 'side';
     opened: boolean = true;
-    rotas: any[] =  [
-        {label:"Início", path:"/inicio", icone:"home"},
-        {label:"Criminosos", path:"/criminosos", icone:"face"},
-        {label:"Ocorrências", path:"/ocorrencia", icone:"description"}
+    rotas: any[] = [
+        { label: "Início", path: "/inicio", icone: "home" },
+        { label: "Criminosos", path: "/criminosos", icone: "face" },
+        { label: "Ocorrências", path: "/ocorrencia", icone: "description" }
     ]
+    escondeMenu: boolean = false;
 
-    constructor(router:Router) {
+    constructor(private router: Router) {
         router.events
-          .filter(event => event instanceof NavigationStart)
-          .subscribe((event:NavigationStart) => {
-            if (window.innerWidth < 768) {
-                this.opened = false;
-            }
-          });
-      }
+            .filter(event => event instanceof NavigationStart)
+            .subscribe((event: NavigationStart) => {
+                console.log(event);
+
+                if(event.url === "/login" || event.url === "/"){
+                    
+                    this.escondeMenu = false;
+                }
+                else{
+                    this.escondeMenu = true;
+                }
+                
+                if (window.innerWidth < 768) {
+                    this.opened = false;
+                }
+            });
+    }
 
     toggleSideBar() {
         this.opened = !this.opened;
@@ -42,6 +54,10 @@ export class AppComponent implements OnInit {
             this.opened = false;
             this.navMode = 'over';
         }
+    }
+
+    logout(){
+        this.router.navigate(['login'])
     }
 
     @HostListener('window:resize', ['$event'])
