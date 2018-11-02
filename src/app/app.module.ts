@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatIconModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatDialogModule, MatSnackBarModule, MatProgressSpinnerModule, MatSidenavModule, MatCheckboxModule, MatTabsModule, MatListModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatDialogModule, MatSnackBarModule, MatProgressSpinnerModule, MatSidenavModule, MatCheckboxModule, MatTabsModule, MatListModule, MatExpansionModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -75,6 +75,7 @@ import { DataServiceService } from './data-service.service';
         MatCheckboxModule,
         MatTabsModule,
         MatListModule,
+        MatExpansionModule,
         NgxMaskModule.forRoot({})
     ],
     providers: [

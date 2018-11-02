@@ -30,3 +30,13 @@ body{
 .spacer {
     flex: 1 1 auto;
   }
+
+.corrige-imagem{
+    width: 50%;
+    height: 100%;
+    border-radius: 5%;
+}
+
+.mt-02{
+    margin-top: 2%
+}

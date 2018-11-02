@@ -1,19 +1,49 @@
 <h2 mat-dialog-title>Similaridade de crimes</h2>
 <mat-dialog-content>
-    <table class="table table-hover">
-        <tr>
-            <th>Nome</th>
-            <th>Índice de Similaridade</th>
-            <th>Participou do crime ?</th>
-        </tr>
-        <tr *ngFor="let similaridade of similaridades">
-            <td>{{similaridade.criminoso.nome}}</td>
-            <td>{{similaridade.result}}</td>
-            <td>
-                <mat-checkbox [(ngModel)]="similaridade.participouCrime"></mat-checkbox>
-            </td>
-        </tr>
-    </table>
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let similaridade of similaridades">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{similaridade.criminoso.nome}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    Similaridade: {{similaridade.result}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong>CPF:</strong> {{similaridade.criminoso.cpf}}
+                        </div>
+                        <div class="col-md-12">
+                            <strong>RG:</strong> {{similaridade.criminoso.rg}}
+                        </div>
+                        <div class="col-md-12">
+                            <strong>Data Nascimento:</strong> {{similaridade.criminoso.dataNascimento}}
+                        </div>
+                    </div>
+                    <div class="row mt-02">
+                        <img class="corrige-imagem" src="http://blog.sagitaz.com/wp-content/uploads/2014/06/mr-bean-sorpendido-fondo-pared-blanca.jpg">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <strong>Participou do crime ? :</strong>
+                                <mat-checkbox [(ngModel)]="similaridade.participouCrime"></mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+
+    </mat-accordion>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-raised-button mat-dialog-close>Fechar</button>
