@@ -7,13 +7,21 @@
                 </mat-card-header>
 
                 <mat-card-content>
-                    <mat-form-field class="col-md-3 col-sm-12">
-                        <input matInput placeholder="Nome" [(ngModel)]="person.nome">
-                    </mat-form-field>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="corrige-imagem" src="https://findect.org.br/wp-content/themes/findect/img/diretoria/fotoH.jpg">
+                        </div>
+                        
+                        <mat-form-field class="col-md-6 col-sm-12">
+                            <input matInput placeholder="Nome" [(ngModel)]="person.nome">
+                        </mat-form-field>
+    
+                        <mat-form-field class="col-md-2 col-sm-12">
+                            <input matInput placeholder="Data de Nascimento" [(ngModel)]="person.dataNascimento" mask='99/99/9999'>
+                        </mat-form-field>
+    
+                    </div>
 
-                    <mat-form-field class="col-md-2 col-sm-12">
-                        <input matInput placeholder="Data de Nascimento" [(ngModel)]="person.dataNascimento" mask='99/99/9999'>
-                    </mat-form-field>
 
                     <mat-form-field class="col-sm-12">
                         <input matInput placeholder="Nº RG" [(ngModel)]="person.rg">
