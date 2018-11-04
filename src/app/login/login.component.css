@@ -1,0 +1,7 @@
+.center {
+    position: absolute;
+    left: 50%;
+    top: 47%;
+    -webkit-transform: translate(-47%, -47%);
+    transform: translate(-47%, -47%);
+  }

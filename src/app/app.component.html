@@ -3,13 +3,13 @@
         <button mat-icon-button (click)="toggleSideBar()">
             <mat-icon>menu</mat-icon>
         </button>
-        <span>Pega Ladrão</span>
+        <span>Cartpol - Similaridade</span>
         <span class="spacer"></span>
         <mat-icon (click)="logout()">lock</mat-icon>
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-drawer-container class="full-heigth">
+<mat-drawer-container class="full-heigth" [ngClass]="{'backgroung-login' : router.url === '/login'}">
     <mat-drawer [(mode)]="navMode" [opened]="opened" class="side-bar-color" *ngIf="escondeMenu">
         <mat-nav-list>
             <a mat-list-item routerLink="{{link.path}}" *ngFor="let link of rotas" class="a-color">
