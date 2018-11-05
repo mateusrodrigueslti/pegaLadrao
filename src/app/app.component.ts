@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     ]
     escondeMenu: boolean = false;
 
-    constructor(private router: Router) {
+    constructor(public router: Router) {
         router.events
             .filter(event => event instanceof NavigationStart)
             .subscribe((event: NavigationStart) => {
