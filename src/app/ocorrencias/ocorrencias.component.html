@@ -6,7 +6,7 @@
 
         <ng-container matColumnDef="descricao">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
-            <mat-cell *matCellDef="let ocorrencia" (click)="editarOcorrencia(ocorrencia)">{{ocorrencia.descricao}}</mat-cell>
+            <mat-cell *matCellDef="let ocorrencia" (click)="editarOcorrencia(ocorrencia)" class="fix-text-list">{{ocorrencia.descricao}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="data">

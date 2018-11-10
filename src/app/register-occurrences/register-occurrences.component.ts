@@ -63,6 +63,8 @@ export class OccurrencesRegisterComponent implements OnInit {
 
                 this.closeSpinner();
 
+                this.router.navigate(["ocorrencia"]);
+
                 this.snackBar.open('Salvo com sucesso ! Que tal gerar um recomendação ?', 'X', {
                     duration: 3000
                 });

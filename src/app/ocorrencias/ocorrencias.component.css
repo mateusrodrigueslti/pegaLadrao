@@ -1,0 +1,5 @@
+.fix-text-list{
+    height: 100px;
+    text-overflow: ellipsis;
+    margin: 15px;
+}
