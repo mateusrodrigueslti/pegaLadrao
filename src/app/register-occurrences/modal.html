@@ -1,10 +1,10 @@
 <h2 mat-dialog-title>Similaridade de crimes</h2>
 <mat-dialog-content>
     <mat-accordion>
-        <mat-expansion-panel *ngFor="let similaridade of similaridades">
+        <mat-expansion-panel *ngFor="let similaridade of similaridades; index as i" [hidden]=" i >= 5">
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    {{similaridade.criminoso.nome}}
+                   {{i + 1 }} - {{similaridade.criminoso.nome}}
                 </mat-panel-title>
                 <mat-panel-description>
                     Similaridade: {{similaridade.result}}
